@@ -631,7 +631,20 @@
   /* ============ PLAY / PAUSE TOGGLES ============ */
   const playerCard = document.getElementById('playerCard');
   const playBtn = document.getElementById('playBtn');
-  if(playBtn) playBtn.addEventListener('click', () => playerCard.classList.toggle('playing'));
+  const dragonAudio = new Audio('Assets/Audio/Dragons_AllSections_02_AfterRealease.aac');
+  
+  //if(playBtn) playBtn.addEventListener('click', () => playerCard.classList.toggle('playing'));
+
+  if(playBtn) {
+    playBtn.addEventListener('click', () => {
+      playerCard.classList.toggle('playing');
+      if (dragonAudio.paused) {
+        dragonAudio.play();
+      } else {
+        dragonAudio.pause();
+      }
+    });
+  }
 
   document.querySelectorAll('.card-play').forEach(btn => {
     btn.addEventListener('click', () => {
