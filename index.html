@@ -152,13 +152,29 @@
 
   /* ---------- DIVIDER ---------- */
   .divider{
-    height:64px; background:var(--paper);
+    height:72px; background:var(--paper);
     display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
+    overflow:hidden; position:relative;
   }
-  .divider svg{width:100%; max-width:1120px; height:22px;}
-
   .divider.dark{background:var(--ink);}
+  .divider-wave{
+    display:flex; align-items:center; justify-content:center; gap:3px;
+    width:100%; max-width:1120px; height:100%; padding:0 32px;
+    position:relative;
+  }
+  /* Optional subtle center tracking line */
+  .divider-wave::after {
+    content:''; position:absolute; left:32px; right:32px; top:50%;
+    height:1px; background:currentColor; opacity:0.1; pointer-events:none;
+  }
+  .divider-wave span{
+    flex:1; background:var(--slate);
+    height:100%; min-width:2px; border-radius:1px; opacity:.45;
+    transform:scaleY(var(--h1));
+    transform-origin:center; /* Mirrors expansion equally top and bottom */
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  .divider.dark .divider-wave span{background:var(--signal); opacity:.55;}
 
   /* ---------- SECTION SHELL ---------- */
   section{padding:96px 0;}
@@ -290,6 +306,16 @@
   /* ---------- CONTACT ---------- */
   footer.contact{background:var(--ink); color:var(--paper); padding:100px 0 48px;}
   .contact-inner{max-width:1120px; margin:0 auto; padding:0 32px;}
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .contact-layout { grid-template-columns: 1fr; }
+    .contact-image { display: none; }
+  }
   footer.contact h2{color:var(--paper);}
   footer.contact .lede{color:var(--slate); max-width:520px;}
   .contact-links{display:flex; gap:36px; flex-wrap:wrap; margin-top:40px;}
@@ -400,7 +426,7 @@
   <div class="waveform" id="heroWave"></div>
 </header>
 
-<div class="divider"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave1" points="" fill="none" stroke="#8891A0" stroke-width="1.5"/></svg></div>
+<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
 
 <!-- SPOTLIGHT -->
 <section id="work">
@@ -442,7 +468,7 @@
   </div>
 </section>
 
-<div class="divider dark"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave2" points="" fill="none" stroke="#4FC8B8" stroke-width="1.5"/></svg></div>
+<div class="divider dark"><div class="divider-wave" data-waveform="dark"></div></div>
 
 <!-- WORK GRID -->
 <section style="background:var(--ink);">
@@ -494,7 +520,7 @@
   </div>
 </section>
 
-<div class="divider"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave3" points="" fill="none" stroke="#8891A0" stroke-width="1.5"/></svg></div>
+<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
 
 <!-- AWARDS -->
 <section id="awards">
@@ -519,7 +545,7 @@
   </div>
 </section>
 
-<div class="divider dark"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave4" points="" fill="none" stroke="#E8A33D" stroke-width="1.5"/></svg></div>
+<div class="divider dark"><div class="divider-wave" data-waveform="amber"></div></div>
 
 <!-- BEYOND THE GAME -->
 <section id="more" style="background:var(--ink);">
@@ -564,7 +590,7 @@
   </div>
 </section>
 
-<div class="divider"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave6" points="" fill="none" stroke="#8891A0" stroke-width="1.5"/></svg></div>
+<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
 
 <!-- STUDIO -->
 <section id="studio" style="position:relative; overflow:hidden;">
@@ -582,21 +608,31 @@
   </div>
 </section>
 
-<div class="divider"><svg viewBox="0 0 1120 22" preserveAspectRatio="none"><polyline id="dividerWave5" points="" fill="none" stroke="#8891A0" stroke-width="1.5"/></svg></div>
+<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
 
 <!-- CONTACT -->
 <footer class="contact" id="contact">
   <div class="contact-inner">
-    <div class="section-eyebrow reveal-up" style="color:var(--signal);">Get in touch</div>
-    <h2 class="reveal-up">Let's work together</h2>
-    <p class="lede reveal-up">Looking for a composer or sound designer for your next mobile release? Reach out.</p>
-    <div class="contact-links reveal-up">
-      <a href="mailto:dylanpringlemusic@gmail.com" class="magnetic">dylanpringlemusic@gmail.com</a>
-      <a href="https://www.linkedin.com/in/dylanpringlemusic" class="magnetic" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.instagram.com/dylanpringlemusic/" class="magnetic" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.facebook.com/DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.youtube.com/@DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">YouTube</a>
+    <!-- Grid wrapper for the top part -->
+    <div class="contact-layout">
+      <div class="contact-image">
+        <img src="Assets/Images/ProfilePic.png" alt="Dylan Pringle" style="width:100%; max-width:300px; border-radius:4px;">
+      </div>
+      <div class="contact-content">
+        <div class="section-eyebrow reveal-up" style="color:var(--signal);">Get in touch</div>
+        <h2 class="reveal-up">Let's work together</h2>
+        <p class="lede reveal-up">Looking for a composer or sound designer for your next mobile release? Reach out.</p>
+        <div class="contact-links reveal-up">
+          <a href="mailto:dylanpringlemusic@gmail.com" class="magnetic">dylanpringlemusic@gmail.com</a>
+          <a href="https://www.linkedin.com/in/dylanpringlemusic" class="magnetic" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/dylanpringlemusic/" class="magnetic" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.youtube.com/@DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
     </div>
+
+    <!-- Foot bottom stays at the bottom of contact-inner -->
     <div class="foot-bottom">
       <span>Dylan Pringle Music — Audio Engineer, Mobile Games</span>
       <span>© 2026</span>
@@ -627,26 +663,25 @@
   document.querySelectorAll('.work-card .mini-wave').forEach(el => buildWave(el, 28, 0.2, 1));
   buildWave(document.getElementById('preloaderWave'), 40, 0.1, 1);
 
-  /* ============ DIVIDER PATHS ============ */
-  function buildDividerPath(id, amp){
-    const el = document.getElementById(id);
-    if(!el) return;
-    let pts = [];
-    const segments = 60;
-    for(let i=0;i<=segments;i++){
-      const x = (1120/segments)*i;
-      const y = 11 + Math.sin(i*0.7 + Math.random()*0.3) * amp * Math.random();
-      pts.push(`${x.toFixed(1)},${y.toFixed(1)}`);
+  /* ============ DIVIDER WAVEFORMS ============ */
+  function buildDividerWaveform(container){
+    if(!container) return;
+    const count = 90;
+    let html = '';
+    for(let i=0;i<count;i++){
+      const distFromCenter = Math.abs(i - count / 2) / (count / 2);
+      const envelope = Math.max(0.15, 1 - Math.pow(distFromCenter, 1.8));
+
+      const h1 = (envelope * (0.2 + Math.random() * 0.8)).toFixed(2);
+      const h2 = (envelope * (0.2 + Math.random() * 0.8)).toFixed(2);
+      const delay = (Math.random() * 2).toFixed(2);
+
+      html += `<span style="--h1:${h1};--h2:${h2};animation-delay:${delay}s;"></span>`;
     }
-    el.setAttribute('points', pts.join(' '));
-    // sync dash length to actual path length so the draw-in animation is exact
-    requestAnimationFrame(() => {
-      const len = el.getTotalLength ? el.getTotalLength() : 1400;
-      el.style.strokeDasharray = len;
-      el.style.strokeDashoffset = len;
-    });
+    container.innerHTML = html;
   }
-  ['dividerWave1','dividerWave2','dividerWave3','dividerWave4','dividerWave5','dividerWave6'].forEach(id => buildDividerPath(id, 9));
+  document.querySelectorAll('.divider-wave').forEach(el => buildDividerWaveform(el));
+  
 
   /* ============ PLAY / PAUSE TOGGLES ============ */
   const playerCard = document.getElementById('playerCard');
@@ -812,6 +847,25 @@
     gsap.to('.hero-inner', {
       yPercent:-15, opacity:0.4, ease:'none',
       scrollTrigger:{ trigger:'header.hero', start:'top top', end:'bottom top', scrub:true }
+    });
+
+    // Sweep divider waveforms in from left to right on scroll
+    document.querySelectorAll('.divider-wave').forEach(wave => {
+      const spans = wave.querySelectorAll('span');
+      gsap.set(spans, { scaleY: 0, opacity: 0 });
+      ScrollTrigger.create({
+        trigger: wave.closest('.divider'),
+        start: 'top 90%',
+        onEnter: () => {
+          gsap.to(spans, {
+            scaleY: 1,
+            opacity: 0.55,
+            duration: 0.8,
+            ease: 'power2.out',
+            stagger: 0.015 // This creates the left-to-right sweeping wave effect
+          });
+        }
+      });
     });
   }
 
