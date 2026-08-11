@@ -572,10 +572,11 @@
     <h2 class="reveal-up">Let's work together</h2>
     <p class="lede reveal-up">Looking for a composer or sound designer for your next mobile release? Reach out.</p>
     <div class="contact-links reveal-up">
-      <a href="mailto:hello@dylanpringlemusic.com" class="magnetic">hello@dylanpringlemusic.com</a>
-      <a href="#" class="magnetic">LinkedIn</a>
-      <a href="#" class="magnetic">SoundCloud</a>
-      <a href="#" class="magnetic">Twitter / X</a>
+      <a href="mailto:dylanpringlemusic@gmail.com" class="magnetic">dylanpringlemusic@gmail.com</a>
+      <a href="https://www.linkedin.com/in/dylanpringlemusic" class="magnetic" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/dylanpringlemusic/" class="magnetic" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.youtube.com/@DylanPringleMusic" class="magnetic" target="_blank" rel="noopener">YouTube</a>
     </div>
     <div class="foot-bottom">
       <span>Dylan Pringle Music — Audio Engineer, Mobile Games</span>
@@ -631,20 +632,7 @@
   /* ============ PLAY / PAUSE TOGGLES ============ */
   const playerCard = document.getElementById('playerCard');
   const playBtn = document.getElementById('playBtn');
-  const dragonAudio = new Audio('Assets/Audio/Dragons_AllSections_02_AfterRealease.aac');
-  
-  //if(playBtn) playBtn.addEventListener('click', () => playerCard.classList.toggle('playing'));
-
-  if(playBtn) {
-    playBtn.addEventListener('click', () => {
-      playerCard.classList.toggle('playing');
-      if (dragonAudio.paused) {
-        dragonAudio.play();
-      } else {
-        dragonAudio.pause();
-      }
-    });
-  }
+  if(playBtn) playBtn.addEventListener('click', () => playerCard.classList.toggle('playing'));
 
   document.querySelectorAll('.card-play').forEach(btn => {
     btn.addEventListener('click', () => {
