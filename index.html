@@ -168,13 +168,19 @@
     height:1px; background:currentColor; opacity:0.1; pointer-events:none;
   }
   .divider-wave span{
-    flex:1; background:var(--slate);
-    height:100%; min-width:2px; border-radius:1px; opacity:.45;
+    flex:1;
+    /* Mirrors the color from the center out: base color at bottom/top edges, lighter/accent color locked precisely in the absolute middle */
+    background: linear-gradient(to bottom, #334155 0%, var(--slate) 50%, #334155 100%);
+    height:100%; min-width:2px; border-radius:1px;
+    opacity:.5;
     transform:scaleY(var(--h1));
-    transform-origin:center; /* Mirrors expansion equally top and bottom */
+    transform-origin:center;
     animation:pulse 2.4s ease-in-out infinite;
   }
-  .divider.dark .divider-wave span{background:var(--signal); opacity:.55;}
+  .divider.dark .divider-wave span{
+    background: linear-gradient(to bottom, #0284c7 0%, var(--signal) 50%, #0284c7 100%);
+    opacity:.6;
+  }
 
   /* ---------- SECTION SHELL ---------- */
   section{padding:96px 0;}
@@ -190,8 +196,21 @@
   .lede{margin-top:16px; color:#3A4250; font-size:17px; line-height:1.65; max-width:560px;}
 
   /* ---------- SPOTLIGHT ---------- */
+  #work{position:relative; overflow:hidden;}
+  .spotlight-bg{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:min(1200px, 108%);
+    pointer-events:none; z-index:0;
+  }
+  .spotlight-bg img{
+    display:block; width:100%; height:auto;
+    -webkit-mask-image:radial-gradient(ellipse 52% 55% at center, #000 18%, transparent 62%);
+    mask-image:radial-gradient(ellipse 52% 55% at center, #000 18%, transparent 62%);
+    opacity:.4;
+  }
   .spotlight{
     display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;
+    position:relative; z-index:1;
   }
   @media (max-width:860px){ .spotlight{grid-template-columns:1fr;} }
   .spotlight-copy p{color:#3A4250; line-height:1.7; font-size:16px; margin-bottom:20px;}
@@ -430,6 +449,9 @@
 
 <!-- SPOTLIGHT -->
 <section id="work">
+  <div class="spotlight-bg" aria-hidden="true">
+    <img src="Assets/Images/HatchDragonsBacking.jpg" alt="">
+  </div>
   <div class="container">
     <div class="spotlight">
       <div class="spotlight-copy reveal-up">
@@ -663,6 +685,7 @@
   document.querySelectorAll('.work-card .mini-wave').forEach(el => buildWave(el, 28, 0.2, 1));
   buildWave(document.getElementById('preloaderWave'), 40, 0.1, 1);
 
+  
   /* ============ DIVIDER WAVEFORMS ============ */
   function buildDividerWaveform(container){
     if(!container) return;
@@ -676,7 +699,10 @@
       const h2 = (envelope * (0.2 + Math.random() * 0.8)).toFixed(2);
       const delay = (Math.random() * 2).toFixed(2);
 
-      html += `<span style="--h1:${h1};--h2:${h2};animation-delay:${delay}s;"></span>`;
+      // Makes taller bars slightly darker/more opaque than shorter ones
+      const opacityFactor = Math.min(1, Math.max(0.3, h1 * 1.2)).toFixed(2);
+
+      html += `<span style="--h1:${h1};--h2:${h2};--op:${opacityFactor};animation-delay:${delay}s;"></span>`;
     }
     container.innerHTML = html;
   }
