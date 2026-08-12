@@ -198,15 +198,15 @@
   /* ---------- SPOTLIGHT ---------- */
   #work{position:relative; overflow:hidden;}
   .spotlight-bg{
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    width:min(1200px, 108%);
+    position:absolute; top:50%; right:0; transform:translateY(-50%);
+    height:82%;
     pointer-events:none; z-index:0;
   }
   .spotlight-bg img{
-    display:block; width:100%; height:auto;
-    -webkit-mask-image:radial-gradient(ellipse 52% 55% at center, #000 18%, transparent 62%);
-    mask-image:radial-gradient(ellipse 52% 55% at center, #000 18%, transparent 62%);
-    opacity:.4;
+    display:block; height:100%; width:auto; max-width:none;
+    -webkit-mask-image:radial-gradient(ellipse 100% 70% at 100% 50%, #000 12%, transparent 52%);
+    mask-image:radial-gradient(ellipse 100% 70% at 100% 50%, #000 12%, transparent 100%);
+    opacity:.85;
   }
   .spotlight{
     display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center;
@@ -445,7 +445,7 @@
   <div class="waveform" id="heroWave"></div>
 </header>
 
-<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
+<!--<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>-->
 
 <!-- SPOTLIGHT -->
 <section id="work">
@@ -457,6 +457,7 @@
       <div class="spotlight-copy reveal-up">
         <div class="section-eyebrow">Featured Project</div>
         <h2>Hatch Dragons</h2>
+        <p></p>
         <p>My role on Hatch Dragons covered the full audio pipeline:</p>
         <ul class="role-list">
           <li>Composed the original score and adaptive music layers</li>
