@@ -204,7 +204,7 @@
   }
   .spotlight-bg img{
     display:block; height:100%; width:auto; max-width:none;
-    -webkit-mask-image:radial-gradient(ellipse 100% 70% at 100% 50%, #000 12%, transparent 52%);
+    -webkit-mask-image:radial-gradient(ellipse 90% 70% at 100% 50%, #000 12%, transparent 100%);
     mask-image:radial-gradient(ellipse 90% 70% at 100% 50%, #000 12%, transparent 100%);
     opacity:.85;
   }
@@ -251,7 +251,21 @@
   .timecode{font-family:var(--font-mono); font-size:11px; color:var(--slate); display:flex; justify-content:space-between;}
 
   /* ---------- WORK GRID ---------- */
-  .work-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  #discography{position:relative; overflow:hidden;}
+  #discography .container{position:relative; z-index:1;}
+  .discography-bg{
+    position:absolute; inset:0;
+    pointer-events:none; z-index:0;
+  }
+  .discography-bg img{
+    display:block; width:100%; height:100%; object-fit:cover; object-position:center;
+    filter:grayscale(.25) brightness(.7) contrast(1.05);
+    -webkit-mask-image:linear-gradient(to bottom, transparent 0%, #000 58%, #000 82%, transparent 100%);
+    mask-image:linear-gradient(to bottom, transparent 0%, #000 58%, #000 82%, transparent 100%);
+    opacity:.8;
+  }
+  #discography .section-head{text-shadow:0 2px 18px rgba(22,27,34,0.9), 0 1px 4px rgba(22,27,34,0.95);}
+  .work-grid{position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
   @media (max-width:720px){ .work-grid{grid-template-columns:1fr;} }
   .work-card{
     background:var(--ink-soft); background:var(--ink); color:var(--paper);
@@ -491,10 +505,13 @@
   </div>
 </section>
 
-<div class="divider dark"><div class="divider-wave" data-waveform="dark"></div></div>
+<!--<div class="divider dark"><div class="divider-wave" data-waveform="dark"></div></div>-->
 
 <!-- WORK GRID -->
-<section style="background:var(--ink);">
+<section id="discography" style="background:var(--ink);">
+  <div class="discography-bg" aria-hidden="true">
+    <img src="Assets/Images/ReaperScreenShot.jpg" alt="">
+  </div>
   <div class="container">
     <div class="section-head reveal-up">
       <div class="section-eyebrow" style="color:var(--signal);">Selected Work</div>
@@ -599,34 +616,34 @@
         <p>Beyond scoring Hatch Dragons, I voiced its mythical inhabitants — building a series of otherworldly, unique vocalisations for the game's creatures, recorded and designed entirely in the home studio.</p>
         <div class="media-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="#8891A0" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          Voice reel — drop a video in here
+          Voice reel
         </div>
       </div>
       <div class="more-card reveal-up">
         <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4FC8B8" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
         <span class="tag" style="color:var(--signal);">Production &amp; Mentoring</span>
         <h3>Recording local artists</h3>
-        <p>In my spare time I record, produce, and mentor local musicians — helping them shape and release their own work, and passing on what running a studio and shipping records has taught me.</p>
+        <p>In my spare time I record, produce, and mentor local musicians — helping them shape and release their own work, whether in the studio or on the road with my mobile setup, capturing artists in their most comfortable spaces.</p>
         <div class="media-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="#8891A0" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          Session footage — drop a video in here
+          Session footage
         </div>
       </div>
       <div class="more-card reveal-up">
         <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
         <span class="tag">Independent Music</span>
         <h3>Dylan Pringle Music</h3>
-        <p>Outside of games, original music goes out under my own name — exploring melancholia, nostalgia, and serenity. The catalogue is closing in on 1,000 monthly listeners, with streams climbing 60–70 a day.</p>
+        <p>Outside of games, original music goes out under my own name — exploring all forms of human emotions, melancholia, nostalgia, anger and serenity. Experimentation is my art, who knows what I'll be creating tomorrow.</p>
         <div class="media-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="#8891A0" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-          Track — drop an audio file in here
+          Track
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>
+<!--<div class="divider"><div class="divider-wave" data-waveform="light"></div></div>-->
 
 <!-- STUDIO -->
 <section id="studio" style="position:relative; overflow:hidden;">
