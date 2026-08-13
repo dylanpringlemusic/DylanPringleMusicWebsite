@@ -90,6 +90,10 @@
     background-attachment:fixed;
     filter:saturate(0.88) contrast(1.05) brightness(0.72);
   }
+  @media (max-width:720px){
+    :root{ --studio-photo-url: url("Assets/Images/StudioLoungePic-mobile.jpg"); }
+    .fixed-photo-bg{ background-attachment:scroll; }
+  }
   .hero-bg-overlay{
     position:absolute; inset:0; z-index:1;
     background:
@@ -464,7 +468,10 @@
 <!-- SPOTLIGHT -->
 <section id="work">
   <div class="spotlight-bg" aria-hidden="true">
-    <img src="Assets/Images/HatchDragonsBacking.jpg" alt="">
+    <picture>
+      <source media="(max-width:720px)" srcset="Assets/Images/HatchDragonsBacking-mobile.jpg">
+      <img src="Assets/Images/HatchDragonsBacking.jpg" alt="">
+    </picture>
   </div>
   <div class="container">
     <div class="spotlight">
@@ -510,7 +517,10 @@
 <!-- WORK GRID -->
 <section id="discography" style="background:var(--ink);">
   <div class="discography-bg" aria-hidden="true">
-    <img src="Assets/Images/ReaperScreenShot.jpg" alt="">
+    <picture>
+      <source media="(max-width:720px)" srcset="Assets/Images/ReaperScreenShot-mobile.jpg">
+      <img src="Assets/Images/ReaperScreenShot.jpg" alt="">
+    </picture>
   </div>
   <div class="container">
     <div class="section-head reveal-up">
