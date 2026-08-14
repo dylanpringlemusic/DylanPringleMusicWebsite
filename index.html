@@ -232,6 +232,16 @@
     }
   }
   .spotlight-copy p{color:#3A4250; line-height:1.7; font-size:16px; margin-bottom:20px;}
+  .hd-title-wrap{display:inline-block;}
+  .studio-credit{
+    display:flex; width:100%; justify-content:flex-end; align-items:center; gap:9px;
+    margin-bottom:22px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--slate); text-decoration:none;
+    transition:color .2s ease;
+  }
+  .studio-credit img{height:20px; width:auto; display:block;}
+  .studio-credit:hover{color:var(--ink);}
   .role-list{list-style:none; margin-bottom:20px;}
   .role-list li{
     color:#3A4250; font-size:16px; line-height:1.6; padding-left:22px; position:relative; margin-bottom:10px;
@@ -297,7 +307,7 @@
       opacity:.8;
     }
   }
-  .work-grid{position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,1fr); gap:24px;}
+  .work-grid{position:relative; z-index:1; display:grid; grid-template-columns:repeat(2,1fr); gap:48px;}
   @media (max-width:720px){ .work-grid{grid-template-columns:1fr;} }
   .work-card{
     background:var(--ink-soft); background:var(--ink); color:var(--paper);
@@ -429,6 +439,7 @@
   .reveal-up{opacity:0; transform:translateY(36px);}
   .reveal-fade{opacity:0;}
   .reveal-scale{opacity:0; transform:scale(0.9);}
+  .reveal-solo{opacity:0;}
   .section-eyebrow{position:relative;}
 
   /* Magnetic buttons get inline transform from JS; keep transition smooth for release */
@@ -444,7 +455,7 @@
   .stat{opacity:0; transform:translateY(20px) scale(.95);}
 
   @media (prefers-reduced-motion: reduce){
-    .reveal-up, .reveal-fade, .reveal-scale, .stat{opacity:1 !important; transform:none !important;}
+    .reveal-up, .reveal-fade, .reveal-scale, .reveal-solo, .stat{opacity:1 !important; transform:none !important;}
     .divider svg polyline{stroke-dashoffset:0 !important;}
     #preloader{display:none !important;}
     .cursor-ring, .cursor-dot{display:none !important;}
@@ -505,8 +516,13 @@
     <div class="spotlight">
       <div class="spotlight-copy reveal-up">
         <div class="section-eyebrow">Featured Project</div>
-        <h2>Hatch Dragons</h2>
-        <p></p>
+        <div class="hd-title-wrap">
+          <h2>Hatch Dragons</h2>
+          <a href="https://www.runawayplay.com" target="_blank" rel="noopener" class="studio-credit">
+            <span>A game by</span>
+            <img src="Assets/Images/RunawayLogo.png" alt="Runaway Play">
+          </a>
+        </div>
         <p>My role on Hatch Dragons covered the full audio pipeline:</p>
         <ul class="role-list">
           <li>Composed, recorded, and produced the original score</li>
@@ -520,7 +536,7 @@
           <div class="stat"><div class="num">Gold</div><div class="label">NYX Awards — Audio Design</div></div>
         </div>
       </div>
-      <div class="player-card tilt reveal-scale" id="playerCard">
+      <div class="player-card reveal-solo" id="playerCard">
         <audio id="hatchDragonsAudio" preload="none">
           <source src="Assets/Audio/Dragons_AllSections_02_AfterRealease.m4a" type="audio/mp4">
         </audio>
@@ -557,55 +573,55 @@
       <p class="lede" style="color:var(--slate);">Scores, sound design, and implementation across the mobile titles I've worked on.</p>
     </div>
     <div class="work-grid" id="workGrid">
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Hatch Dragons</h3>
-        <p>Full original score and sound design. #1 in the U.S. · Gold, NYX Awards.</p>
+        <p>A relaxing, dreamlike musical journey woven with threads of nostalgia, wonder, and gentle melancholia, using beautiful piano melodies and magical chimes.</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" data-audio-target="hatchDragonsAudio" aria-label="Play Hatch Dragons main theme"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
         </div>
       </div>
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Pond Life</h3>
-        <p>Add a line here about your role — score, SFX, or implementation work.</p>
+        <p>A peaceful, meditative orchestral score capturing the intimate busyness of a shallow pond, accented by beautiful harps and rhythmic handpan percussion.</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" aria-label="Preview waveform"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
         </div>
       </div>
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Bird Kind</h3>
-        <p>Add a line here about your role — score, SFX, or implementation work.</p>
+        <p>A tranquil, pagan-inspired acoustic piece that pulls the listener deep into a magical tropical forest, driven by authentic wooden flutes and warm string arrangements.</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" aria-label="Preview waveform"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
         </div>
       </div>
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Honey Grove</h3>
-        <p>Add a line here about your role — score, SFX, or implementation work.</p>
+        <p>A playful, energetic track capturing the busy hustle of bees, driven by infectious whistling lines, shakers, and upbeat, rhythmic guitar work.</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" aria-label="Preview waveform"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
         </div>
       </div>
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Bunny Haven</h3>
-        <p>Add a line here about your role — score, SFX, or implementation work.</p>
+        <p>A charming, acoustic composition built on sweet melodic guitar patterns and a light, bouncy rhythm inspired by lively little bunnies.</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" aria-label="Preview waveform"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
         </div>
       </div>
-      <div class="work-card tilt reveal-up">
+      <div class="work-card reveal-up">
         <span class="tag">Score · Sound Design · Implementation</span>
         <h3>Old Friends</h3>
-        <p>Add a line here about your role — score, SFX, or implementation work.</p>
+        <p>An acoustic guitar-driven singalong celebrating the beauty of older dogs in their twilight years, balancing tender, subtle sadness with warm, fun energy and a catchy, memorable hook: "La la la la, love will never grow old."</p>
         <div class="work-foot">
           <button class="play-btn card-play magnetic" aria-label="Preview waveform"><svg viewBox="0 0 16 16"><path class="icon-play" fill="#161B22" d="M4 2l10 6-10 6V2z"/><path class="icon-pause" fill="#161B22" d="M4 2h3v12H4zM9 2h3v12H9z"/></svg></button>
           <div class="mini-wave"></div>
@@ -626,7 +642,7 @@
       <div>
         <h3>Gold Award — Audio Design</h3>
         <div class="meta">NYX Game Awards 2026 · Hatch Dragons</div>
-        <p>Awarded for the full audio direction on Hatch Dragons, spanning original score, sound design, character voice work, and adaptive implementation — judged by a jury of 200+ industry experts from studios including Riot Games and Nexon.</p>
+        <p>Awarded for the full audio arrangement on Hatch Dragons, spanning original score, sound design, character voice work, and adaptive implementation — judged by a jury of 200+ industry experts from studios including Riot Games and Nexon.</p>
         <p>Other awards for Hatch Dragons included</p>
         <div class="studio-wins">
           <span>Grand Winner — Mobile Cozy</span>
@@ -660,7 +676,7 @@
         </div>
       </div>
       <div class="more-card reveal-up">
-        <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4FC8B8" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#4FC8B8" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <span class="tag" style="color:var(--signal);">Production &amp; Mentoring</span>
         <h3>Recording local artists</h3>
         <p>In my spare time I record, produce, and mentor local musicians — helping them shape and release their own work, whether in the studio or on the road with my mobile setup, capturing artists in their most comfortable spaces.</p>
@@ -673,7 +689,7 @@
         <div class="more-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#E8A33D" stroke-width="1.6"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
         <span class="tag">Independent Music</span>
         <h3>Dylan Pringle Music</h3>
-        <p>Outside of games, original music goes out under my own name — exploring all forms of human emotions, melancholia, nostalgia, anger and serenity. Experimentation is my art, who knows what I'll be creating tomorrow.</p>
+        <p>Outside of games, original music goes out under my own name — Experimentation is my art, and with a love for a wide variety of music styles and genres, who knows what I'll be creating tomorrow.</p>
         <div class="media-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="#8891A0" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
           Track
@@ -694,8 +710,8 @@
       <div class="studio-copy reveal-up">
         <div class="section-eyebrow" style="color:var(--amber);">Behind the Sound</div>
         <h2 style="color:var(--paper);">The Studio</h2>
-        <p style="color:var(--slate);">Everything is written, recorded, and mixed from a home studio — from first sketch to the final implementation-ready stems that go into the game engine.</p>
-        <p style="color:var(--slate);">Add a paragraph here about your setup, workflow, or the tools you reach for most — it's what makes this page sound like you.</p>
+        <p style="color:var(--slate);">Everything is written, recorded, and mixed from my home studio — from first sketch to the final implementation-ready stems that go into the game engine.</p>
+        <p style="color:var(--slate);">Operating out of my preferred digital audio workstation, Reaper, my setup combines a massive library of VST plugins and real-world instruments to shape every layer of my music and sound design.</p>
       </div>
     </div>
   </div>
@@ -917,8 +933,14 @@
 
     // Staggered work cards
     gsap.to('#workGrid .work-card', {
-      opacity:1, y:0, duration:0.7, ease:'power3.out', stagger:0.12,
+      opacity:1, y:0, scale:1, duration:0.7, ease:'power3.out', stagger:0.12,
       scrollTrigger:{ trigger:'#workGrid', start:'top 85%' }
+    });
+
+    // Featured player card — same resting scale as work cards
+    gsap.to('#playerCard', {
+      opacity:1, scale:1, duration:0.8, ease:'back.out(1.6)',
+      scrollTrigger:{ trigger:'#playerCard', start:'top 88%' }
     });
 
     // Stat blocks pop in with stagger
@@ -1015,6 +1037,19 @@
     });
   }
 
+  /* ============ CARD HOVER SCALE ============ */
+  function initCardHoverScale(){
+    if(reduceMotion || !canHover) return;
+    document.querySelectorAll('#workGrid .work-card, #playerCard').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(el, {scale:1.1, duration:0.35, ease:'power2.out'});
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(el, {scale:1, duration:0.35, ease:'power2.out'});
+      });
+    });
+  }
+
   /* ============ NAV SCROLL STATE ============ */
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
@@ -1028,6 +1063,7 @@
   initCursor();
   initMagnetic();
   initTilt();
+  initCardHoverScale();
 })();
 </script>
 
